@@ -3,162 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moon Cake Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Cryptocurrency Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
-    <div class="container">
-        <div class="sidebar">
-            <div class="logo">
-                <img src="moon-cake-logo.png" alt="Moon Cake Logo">
-                <p>MOON CAKE</p>
-            </div>
-            <ul>
-                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#"><i class="fas fa-chart-bar"></i> Charts</a></li>
-                <li><a href="#"><i class="fas fa-wallet"></i> Wallet</a></li>
-                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
-            </ul>
+<body class="dark-theme">
+    <button id="sidebar-toggle">&#9776;</button>
+    <aside id="sidebar" class="active">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+            <span>MoonCake</span>
         </div>
-        <div class="main">
-            <div class="header">
-                <h1>Dashboard</h1>
-                <div class="search-bar">
-                    <input type="text" placeholder="Search...">
-                    <i class="fas fa-search"></i>
-                </div>
-                <div class="notification">
-                    <i class="fas fa-bell"></i>
-                </div>
-                <div class="user">
-                    <i class="fas fa-user-circle"></i>
-                </div>
-            </div>
-            <div class="content">
-                <div class="card">
-                    <h2>Bitcoin <i class="fas fa-caret-down"></i></h2>
-                    <p class="price">$57,626.63</p>
-                    <p class="change">↑ $658.67</p>
-                    <div class="chart">
+        <nav>
+            <ul>
+                <li><a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                <li><a href="#"><i class="fas fa-wallet"></i> Wallet</a></li>
+                <li><a href="#"><i class="fas fa-newspaper"></i> News</a></li>
+                <li><a href="#"><i class="fas fa-cogs"></i> Settings</a></li>
+                <li><a href="#" id="favorites-toggle"><i class="fas fa-star"></i> Favorites</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <main>
+        <div class="top-bar">     
+            <input type="text" id="search" placeholder="Search for a cryptocurrency">
+            <button id="search-btn"><i class="fas fa-search"></i></button>
+            <select id="currency-select">
+                <option value="usd">USD</option>
+                <option value="eur">EUR</option>
+                <option value="gbp">GBP</option>
+                <!-- Add more currencies as needed -->
+            </select>
+            <button id="convert-btn">Convert</button>
+            <button id="dark-mode-toggle"><i class="fas fa-moon"></i> Dark Mode</button>
+        </div>
+        <section id="dashboard" class="active">
+            <div class="crypto-section">
+                <div class="crypto-item">
+                    <h2><i class="fab fa-bitcoin"></i> Bitcoin (BTC)</h2>
+                    <p id="btc-price">$23,376.76</p>
+                    <p id="btc-change">24h Change: <span class="positive">+1.45%</span></p>
+                    <div class="crypto-chart">
                         <canvas id="btcChart"></canvas>
                     </div>
-                    <div class="stats">
-                        <span>1.4%</span>
-                        <span>1.9%</span>
-                        <span>17.1%</span>
-                    </div>
                 </div>
-                <div class="card">
-                    <h2>Ethereum <i class="fas fa-caret-up"></i></h2>
-                    <p class="price">$4,285.08</p>
-                    <p class="change">↑ $129.67</p>
-                    <div class="chart">
+                <div class="crypto-item">
+                    <h2><i class="fab fa-ethereum"></i> Ethereum (ETH)</h2>
+                    <p id="eth-price">$1,650.13</p>
+                    <p id="eth-change">24h Change: <span class="negative">-0.12%</span></p>
+                    <div class="crypto-chart">
                         <canvas id="ethChart"></canvas>
                     </div>
-                    <div class="stats">
-                        <span>1.4%</span>
-                        <span>1.9%</span>
-                        <span>17.1%</span>
-                    </div>
-                </div>
-                <div class="card">
-                    <h2>Chainlink <i class="fas fa-caret-down"></i></h2>
-                    <p class="price">$26.12</p>
-                    <p class="change">↓ $1.67</p>
-                    <div class="chart">
-                        <canvas id="linkChart"></canvas>
-                    </div>
-                    <div class="stats">
-                        <span>-1.4%</span>
-                        <span>4.8%</span>
-                        <span>12.7%</span>
-                    </div>
-                </div>
-                <div class="card">
-                    <h2>Chainlink <i class="fas fa-caret-down"></i></h2>
-                    <p class="price">$123.12</p>
-                    <p class="change">↓ $6.12</p>
-                    <div class="chart">
-                        <canvas id="linkChart2"></canvas>
-                    </div>
-                    <div class="stats">
-                        <span>-1.4%</span>
-                        <span>1.9%</span>
-                        <span>1.7%</span>
-                    </div>
-                </div>
-                <div class="card">
-                    <h2>Avalanche <i class="fas fa-caret-down"></i></h2>
-                    <p class="price">$124.23</p>
-                    <p class="change">↑ $12.13</p>
-                    <div class="chart">
-                        <canvas id="avaxChart"></canvas>
-                    </div>
-                    <div class="stats">
-                        <span>2.3%</span>
-                        <span>1.9%</span>
-                        <span>-3.3%</span>
-                    </div>
                 </div>
             </div>
-            <div class="sidebar-right">
-                <h2>Your balance</h2>
-                <div class="balance">
-                    <div class="circle">
-                        <svg viewBox="0 0 100 100">
-                            <circle cx="50" cy="50" r="45" stroke="#282c34" stroke-width="10" fill="none" />
-                            <circle cx="50" cy="50" r="45" stroke="#f87171" stroke-width="10" fill="none" stroke-dasharray="282.7433388230814 282.7433388230814" stroke-dashoffset="282.7433388230814" />
-                            <text x="50" y="50" text-anchor="middle" dominant-baseline="middle" font-size="16px" fill="#fff">
-                                $12 000.00
-                            </text>
-                        </svg>
-                        <p>+17.1%</p>
-                    </div>
-                    <div class="details">
-                        <div>
-                            <p>$ 12 000.00</p>
-                            <p>ETH -33%</p>
-                        </div>
-                        <div>
-                            <p>$ 9 000.00</p>
-                            <p>BTC -33%</p>
-                        </div>
-                        <div>
-                            <p>$ 4 999.23</p>
-                            <p>DOT -33%</p>
-                        </div>
-                        <div>
-                            <p>$ 2 230.00</p>
-                            <p>LUNA -12.1%</p>
-                        </div>
-                    </div>
+            <div class="additional-metrics">
+                <div class="balance-widget">
+                    <h3>Your Balance</h3>
+                    <p id="user-balance">$12,000.00</p>
                 </div>
-                <div class="card">
-                    <i class="fas fa-chart-line"></i>
-                    <p>↑ $59.67</p>
-                    <p>Wallet profit 3H</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-coins"></i>
-                    <p>11 coins</p>
-                    <p>On your watchlist</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-chart-pie"></i>
-                    <p>39.56%</p>
-                    <p>Ston Market Cap Dominance</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <p>74%</p>
-                    <p>Extreme Greed</p>
-                    <p>Fear and greed index</p>
+                <div class="metric-widget">
+                    <h3>Market Sentiment</h3>
+                    <p class="positive">Extreme Greed</p>
                 </div>
             </div>
-        </div>
-    </div>
-    <script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <div class="crypto-list-section">
+                <h2>All Cryptocurrencies</h2>
+                <div class="crypto-grid" id="crypto-list"></div>
+            </div>
+        </section>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
