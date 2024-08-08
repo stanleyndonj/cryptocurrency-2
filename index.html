@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cryptocurrency Tracker</title>
+    <!-- External CSS and Font Awesome for icons -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Chart.js for charts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="dark-theme">
@@ -53,7 +55,7 @@
         <!-- Dashboard section for main cryptocurrencies and metrics -->
         <section id="dashboard" class="active">
             <div class="crypto-section">
-                <!-- Bitcoin information -->
+                <!-- Example of a specific crypto card (can be dynamically generated) -->
                 <div class="crypto-item">
                     <h2><i class="fab fa-bitcoin"></i> Bitcoin (BTC)</h2>
                     <p id="btc-price">$23,376.76</p>
@@ -63,34 +65,13 @@
                     </div>
                     <button class="add-to-favorites">Add to Favorites</button>
                 </div>
-                <!-- Ethereum information -->
-                <div class="crypto-item">
-                    <h2><i class="fab fa-ethereum"></i> Ethereum (ETH)</h2>
-                    <p id="eth-price">$1,650.13</p>
-                    <p id="eth-change">24h Change: <span class="negative">-0.12%</span></p>
-                    <div class="crypto-chart">
-                        <canvas id="ethChart"></canvas>
-                    </div>
-                    <button class="add-to-favorites">Add to Favorites</button>
-                </div>
-            </div>
-
-            <!-- Additional metrics -->
-            <div class="additional-metrics">
-                <div class="balance-widget">
-                    <h3>Your Balance</h3>
-                    <p id="user-balance">$12,000.00</p>
-                </div>
-                <div class="metric-widget">
-                    <h3>Market Sentiment</h3>
-                    <p class="positive">Extreme Greed</p>
-                </div>
             </div>
 
             <!-- Section for displaying all cryptocurrencies -->
             <div class="crypto-list-section">
                 <h2>All Cryptocurrencies</h2>
                 <div class="crypto-grid" id="crypto-list"></div>
+                <div id="pagination-controls"></div> <!-- Pagination controls will be generated here -->
             </div>
         </section>
     </main>
