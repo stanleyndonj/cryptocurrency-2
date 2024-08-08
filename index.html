@@ -9,7 +9,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="dark-theme">
+    <!-- Sidebar toggle button -->
     <button id="sidebar-toggle">&#9776;</button>
+
+    <!-- Sidebar section -->
     <aside id="sidebar" class="active">
         <div class="logo">
             <img src="logo.png" alt="Logo">
@@ -25,8 +28,15 @@
                 <li><a href="#" id="favorites-toggle"><i class="fas fa-star"></i> Favorites</a></li>
             </ul>
         </nav>
+        <div id="favorites-section" class="favorites-section">
+            <h2>Your Favorites</h2>
+            <div class="crypto-grid" id="favorites-list"></div>
+        </div>
     </aside>
+
+    <!-- Main content section -->
     <main>
+        <!-- Top bar with search, currency selection, and dark mode toggle -->
         <div class="top-bar">     
             <input type="text" id="search" placeholder="Search for a cryptocurrency">
             <button id="search-btn"><i class="fas fa-search"></i></button>
@@ -34,13 +44,16 @@
                 <option value="usd">USD</option>
                 <option value="eur">EUR</option>
                 <option value="gbp">GBP</option>
-                <option value="ksh">ksh</option>
+                <option value="ksh">KSH</option>
             </select>
             <button id="convert-btn">Convert</button>
             <button id="dark-mode-toggle"><i class="fas fa-moon"></i> Dark Mode</button>
         </div>
+
+        <!-- Dashboard section for main cryptocurrencies and metrics -->
         <section id="dashboard" class="active">
             <div class="crypto-section">
+                <!-- Bitcoin information -->
                 <div class="crypto-item">
                     <h2><i class="fab fa-bitcoin"></i> Bitcoin (BTC)</h2>
                     <p id="btc-price">$23,376.76</p>
@@ -48,7 +61,9 @@
                     <div class="crypto-chart">
                         <canvas id="btcChart"></canvas>
                     </div>
+                    <button class="add-to-favorites">Add to Favorites</button>
                 </div>
+                <!-- Ethereum information -->
                 <div class="crypto-item">
                     <h2><i class="fab fa-ethereum"></i> Ethereum (ETH)</h2>
                     <p id="eth-price">$1,650.13</p>
@@ -56,8 +71,11 @@
                     <div class="crypto-chart">
                         <canvas id="ethChart"></canvas>
                     </div>
+                    <button class="add-to-favorites">Add to Favorites</button>
                 </div>
             </div>
+
+            <!-- Additional metrics -->
             <div class="additional-metrics">
                 <div class="balance-widget">
                     <h3>Your Balance</h3>
@@ -68,12 +86,16 @@
                     <p class="positive">Extreme Greed</p>
                 </div>
             </div>
+
+            <!-- Section for displaying all cryptocurrencies -->
             <div class="crypto-list-section">
                 <h2>All Cryptocurrencies</h2>
                 <div class="crypto-grid" id="crypto-list"></div>
             </div>
         </section>
     </main>
+
+    <!-- JavaScript functionality -->
     <script src="script.js"></script>
 </body>
 </html>
